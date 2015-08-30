@@ -1,12 +1,14 @@
+import os
 dimensions_skyline_list=[];
 window_maxsize=0;
 window_data=[];
 data_list=[];
-data_tuple_with_timestamp=[];
+skylines=[];
+timestamp=0;
 with open('query1.txt') as f:
     temp_list = [[int(x) for x in line.split()] for line in f];
     dimensions_skyline_list = temp_list[0];
-    window_maxsize = temp_list[0][0]
+    window_maxsize = temp_list[1][0]
 with open('sample2.txt') as f:
     data_list = [[int(x) for x in line.split()] for line in f];
 
@@ -32,8 +34,8 @@ def compare(element_1,element_2):
 		return 1
 
 def find_skylines(sample_data):
-	timestamp=0;
-	global window_data;
+	global window_data,timestamp;
+	data_tuple_with_timestamp=[];
 	for data in sample_data:
 		timestamp=timestamp+1;
 		data_tuple_with_timestamp.append([timestamp,data]);
@@ -62,10 +64,44 @@ def find_skylines(sample_data):
 					topush_data=True;
 					new_window_data.append(window_data[i]);
 			if(topush_data==True):
-				new_window_data.append(data);
+				if(len(new_window_data)<window_maxsize):
+					new_window_data.append(data);
+				else:
+					with open("skyline_temporary_file.txt", "a") as myfile:
+						# print window_data,data;
+						for integer in data[1]:
+							myfile.write(str(integer));
+							myfile.write(" ");
+						myfile.write("\n");
 			window_data=new_window_data;
+			print window_data;
+	print "\nIteration Complete\n";
+	if(os.stat("skyline_temporary_file.txt").st_size == 0):
+		print "Done";
+		for data in window_data:
+			skylines.append(data);
+	else:
+		# print "Size=",os.stat("skyline_temporary_file.txt").st_size;
+		temp_data_list=[];
+		new_window_data=[];
+		with open('skyline_temporary_file.txt') as f:
+			temp_data_list = [[int(x) for x in line.split()] for line in f];
+		fo = open("skyline_temporary_file.txt", "rw+");
+		fo.truncate();
+		for data in window_data:
+			# print temp_data_list[0][0] , data[0];
+			if(temp_data_list[0][0] > data[0]):
+				skylines.append(data[0]);
+			else:
+				new_window_data.append(data);
+		window_data=new_window_data;
+		print "File data=",temp_data_list,"\n";	
+		find_skylines(temp_data_list);
+			
+
+
 find_skylines(data_list);
-print window_data;
+print skylines;
 
 
 
