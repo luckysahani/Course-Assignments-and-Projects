@@ -1,5 +1,7 @@
 import os
 import time
+import math
+from operator import itemgetter
 dimensions_skyline_list=[];
 window_maxsize=0;
 window_data=[];
@@ -100,11 +102,28 @@ def find_skylines_using_BNL(sample_data):
 		# print "File data=",temp_data_list,"\n";	
 		find_skylines_using_BNL(temp_data_list);
 
+def entropy(data):
+	entropy=0;
+	for i in dimensions_skyline_list:
+		entropy=entropy+math.log(1+data[i]);
+	return entropy;
+
+def find_skylines_using_SFS(sample_data):
+	temp_data_list=[];
+	final_data_list_2=[];
+	for data in sample_data:
+		temp_data_list.append([entropy(data),data]);
+	final_data_list_1=sorted(temp_data_list,key=itemgetter(0));
+	for data in final_data_list_1:
+		final_data_list_2.append(data[1]);
+	find_skylines_using_BNL(final_data_list_2);
+
+
 # Start time for the BNL function
 start_time=int(round(time.time() * 1000));
 
 # Calling main function for finding skylines
-find_skylines_using_BNL(data_list);
+find_skylines_using_SFS(data_list);
 
 # End time for the BNL function
 end_time=int(round(time.time() * 1000));
