@@ -7,7 +7,7 @@ with open('query1.txt') as f:
     temp_list = [[int(x) for x in line.split()] for line in f];
     dimensions_skyline_list = temp_list[0];
     window_maxsize = temp_list[0][0]
-with open('sample1.txt') as f:
+with open('sample2.txt') as f:
     data_list = [[int(x) for x in line.split()] for line in f];
 
 def compare(element_1,element_2):
@@ -16,8 +16,9 @@ def compare(element_1,element_2):
 	y=element_2[1];
 	for i in dimensions_skyline_list:
 		temp_list.append(x[i]-y[i]);
-	flag1=1;
-	flag2=2;
+	# print x,y,temp_list;
+	flag1=0;
+	flag2=0;
 	for elem in temp_list:
 		if(elem > 0):
 			flag1 = 1;
@@ -26,9 +27,9 @@ def compare(element_1,element_2):
 	if(flag1 == 1 and flag2 == 1):
 		return 0
 	elif(flag1 == 1):
-		return 1
-	else :
 		return 2
+	else :
+		return 1
 
 def find_skylines(sample_data):
 	timestamp=0;
@@ -43,11 +44,12 @@ def find_skylines(sample_data):
 			topush_data=False;
 			flag1=0;
 			new_window_data=[];
-			# print window_data,"\n\n";
+			# print "\n",window_data;
 			for i in xrange(0,len(window_data)): 
 				# print window_data,i,window_data[i];
 				element=window_data[i];
 				compare_result = compare(data,element);
+				# print compare_result;
 				if (compare_result == 1):
 					flag1=1;
 					topush_data=True;
@@ -61,15 +63,7 @@ def find_skylines(sample_data):
 					new_window_data.append(window_data[i]);
 			if(topush_data==True):
 				new_window_data.append(data);
-				window_data=new_window_data;
-
-
-
-
-
-
-
-
+			window_data=new_window_data;
 find_skylines(data_list);
 print window_data;
 
