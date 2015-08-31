@@ -19,21 +19,18 @@ with open('sample_ant.txt') as f:
 def compare(element_1,element_2):
 	global number_of_comparisions;
 	number_of_comparisions=number_of_comparisions+1;
-	temp_list=[];
-	x=element_1[1];
-	y=element_2[1];
-	for i in dimensions_skyline_list:
-		temp_list.append(x[i]-y[i]);
 	flag1=0;
 	flag2=0;
-	for elem in temp_list:
-		if(elem > 0):
+	for i in dimensions_skyline_list:
+		if((element_1[1][i]-element_2[1][i])>0):
+			if(flag2==1):
+				return 0;
 			flag1 = 1;
-		elif (elem < 0) :
+		elif((element_1[1][i]-element_2[1][i])<0):
+			if(flag1==1):
+				return 0;
 			flag2 = 1;
-	if(flag1 == 1 and flag2 == 1):
-		return 0
-	elif(flag1 == 1):
+	if(flag1 == 1 and flag2 == 0):
 		return 2
 	else :
 		return 1
@@ -116,3 +113,9 @@ total_time=end_time-start_time;
 print "Total running time =",total_time,"\n";
 print "Number of object-to-object comparisons = ",number_of_comparisions,"\n";
 print "Size of skyline set = ",len(skylines),"\n";
+
+#Printing the Skyline object indexes into a file
+with open("skyline_indexes.txt", "w+") as myfile:
+	for data in skylines:
+		myfile.write(str(data[0]));
+		myfile.write("\n");
