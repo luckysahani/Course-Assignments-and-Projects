@@ -246,7 +246,7 @@ class RTree(object):
 				S_new = getSpace(newMBR)
 				S1 = getSpace(self.leaves[i].MBR)
 				S2 = getSpace(self.leaves[j].MBR)
-				if S_new - S1 - S2 > d:
+				if S_new - S1 - S2 > a:
 					b1 = i
 					b2 = j
 					a = S_new - S1 - S2f
