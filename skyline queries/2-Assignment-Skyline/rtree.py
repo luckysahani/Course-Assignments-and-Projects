@@ -178,22 +178,76 @@ class Rtree(object):
             for x in result:
                 if x != None:
                     return x
-            
 
-#
-def intersect(MBRa, MBRb):
-	dimension = len(MBRa)/2
+    #Find skyline using BBS
+    #Algorithm BBS (R-tree R)
+    def find_skylines_using_bbs(self,dimensions):
+    	q=PriorityQueue()
+    	global	number_of_comparisions
+		# 1. S=∅ // list of skyline points
+		skylines = []
+		# 2. insert all entries of the root R in the heap/queue
+		for leaf in self.leaves:
+			q.push(leaf,indexingValue(leaf.MBR))
+		# 3. while heap/queue not empty
+		while q.empty() != 0:
+			# 4. remove top entry e
+			some_object = q.pop()
+			# 5. if e is dominated by some point in S discard e
+			if IsDominated_by_skylines(skylines,some_object.MBR,dimensions_skyline_list):
+				# 7. if e is an intermediate entry
+				if some_object.level>0:
+					# 8. for each child ei of e
+					for leaf in some_object.leaves:
+						# 10. insert ei into heap/queue
+						queue.push(leaf,indexingValue(leaf.MBR))
+				# 11. else // e is a data point
+				else :
+					# 12. insert ei into S
+					skylines.append((some_object.index,obj.MBR))
+		return skylines,number_of_comparisions
 	
-	#if its ith dimension value is greater than the maximum ith dimension value of MBR
-	for i in range(0, dimension):
-		if MBRa[i] > MBRb[i+d]:
+
+#To check whether the skyline set dominated the object or not
+def IsDominated_by_skylines(skyline_set,MBR_1,dimensions_skyline_list):
+	global	number_of_comparisions
+	for skyline in skyline_set:
+		number_of_comparisions=number_of_comparisions+1;
+		temp = compare(skyline[1],MBR_1,dimensions_skyline_list)
+		if(temp == 1) return True
+	return False
+
+#Comparing two objects to check for domination
+def compare(element_1,element_2,dimensions_skyline_list):
+	flag1=0;
+	flag2=0;
+	for i in dimensions_skyline_list:
+		if((element_1[1][i]-element_2[1][i])>0):
+			if(flag2==1):
+				return 0;
+			flag1 = 1;
+		elif((element_1[1][i]-element_2[1][i])<0):
+			if(flag1==1):
+				return 0;
+			flag2 = 1;
+	if(flag1 == 1 and flag2 == 0):
+		return 2
+	else :
+		return 1
+
+#To check whether the two MBR's have a common volume or not
+def intersect(MBR_1,MBR_2):
+	total_number_of_dimensions=len(MBR_1)/2
+	for i in range(0, total_number_of_dimensions):
+		if MBR_1[i] > MBR_2[i+d]:
 			return 0
 
-	for i in range(0,dimension):
-		if MBRa[i+d] < MBRb[i]:
+	for i in range(0,total_number_of_dimensions):
+		if MBR_1[i+d] < MBR_2[i]:
 			return 0
 
 	return 1
+
 # Insert a new node, return to the root node after the update.            
 def insert (root, node):
     target = root.choose_leaf (node)
@@ -218,6 +272,14 @@ def contain(MBR_1,MBR_2):
 			return 0
 
 	return 1
+
+#To get the indexing value of an MBR
+def indexingValue(MBR):
+	d = len(MBR)/2
+	indexValue = 0
+	for i in range(0, d):
+		indexValue = indexValue + MBR[i]
+	return indexValue
 
 #Merge two MBR's and return the new merged MBR
 def merge(MBR_1,MBR_2):
@@ -274,3 +336,18 @@ class PriorityQueue:
 
 	def empty(self):
 		return len(self._queue)
+
+
+
+if __name__ == '__main__':
+	startTime = time.time()
+	
+	#Get data from query file
+	with open('sample_query.txt') as f:
+    temp_list = [[int(x) for x in line.split()] for line in f];
+    dimensions_skyline_list = temp_list[0];
+    window_maxsize = temp_list[1][0]
+	
+	#Get data from input file
+	with open('sample_ant.txt') as f:
+    data_list = [[float(x) for x in line.split()] for line in f];
