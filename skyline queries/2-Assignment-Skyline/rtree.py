@@ -42,14 +42,14 @@ class Rtree(object):
 			minimum_increase_in_volume_index = -1;
 			for i in range(0, len(self.leaves)) :
 				temp_increase_in_volume= increase_in_volume(self.leaves[i].MBR, Node.MBR)
-				if temp_increase_in_volume < minimum_increase_in_volume
+				if temp_increase_in_volume < minimum_increase_in_volume :
 					minimum_increase_in_volume = temp_increase_in_volume
 					minimum_increase_in_volume_index= i
 			return self.leaves[minimum_increase_in_volume_index].choose_leaf(Node)
 
-	def split_node (self):
+	def split_node(self):
 		# If the current node has no parent
-        if(self.parent == None):
+        if (self.parent == None):
         	# Parent node created and then the current node is appended 
         	self.parent = Rtree(level = self.level +1,minimum_childs=self.minimum_childs,maximum_childs=self.maximum_childs)
         	self.parent.leaves.append(self)
@@ -340,14 +340,46 @@ class PriorityQueue:
 
 
 if __name__ == '__main__':
-	startTime = time.time()
+	start_time=int(round(time.time() * 1000));
 	
 	#Get data from query file
 	with open('sample_query.txt') as f:
     temp_list = [[int(x) for x in line.split()] for line in f];
     dimensions_skyline_list = temp_list[0];
-    window_maxsize = temp_list[1][0]
+    blocksize = temp_list[1][0]
 	
 	#Get data from input file
 	with open('sample_ant.txt') as f:
     data_list = [[float(x) for x in line.split()] for line in f];
+
+
+    root = RTree(minimum_childs = blocksize/2, maximum_childs = blocksize)
+    l = []
+    for data in data_list:
+    	a= {}
+    	for j in len(1,len(data)):
+    		a[j] = data[j]
+    		a[j+len(data)-1]=data[j]
+    	l.append(Node(MBR = a,index = data[0]))
+
+    for i in range(0, len(l)):
+    	root = insert(root, n[i])
+
+    number_of_comparisions = 0
+    skylines,number_of_comparisions=root.find_skylines_using_bbs(dimensions_skyline_list)
+
+    skyline_index = []
+    for object in skylines:
+    	skyline_index.append(object[0])
+    skyline_index= sorted(skyline_index)
+
+
+    end_time=int(round(time.time() * 1000));
+
+	#Calculating the total time
+	total_time=end_time-start_time;
+
+	#Printing the required Output
+	print "Total running time =",total_time,"\n";
+	print "Number of object-to-object comparisons = ",number_of_comparisions,"\n";
+	print "Size of skyline set = ",len(skylines),"\n";
