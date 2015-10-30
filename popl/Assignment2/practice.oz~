@@ -1,0 +1,4 @@
+declare
+SS = {Dictionary.new}
+{Dictionary.put SingleAssignmentStore hell void}
+{Dictionary.put SingleAssignmentStore hell 1}

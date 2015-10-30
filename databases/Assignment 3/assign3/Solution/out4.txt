@@ -1,0 +1,412 @@
+MongoDB shell version: 2.4.9
+connecting to: test
+switched to db digg
+{
+	"_id" : ObjectId("4ba267dc238d3ba3ca000042"),
+	"href" : "http://digg.com/television/Mike_Tyson_to_Host_Reality_Show_on_Animal_Planet",
+	"title" : "Mike Tyson to Host Reality Show on Animal Planet",
+	"comments" : 56,
+	"thumbnail" : {
+		"originalheight" : 215,
+		"originalwidth" : 420,
+		"src" : "http://digg.com/television/Mike_Tyson_to_Host_Reality_Show_on_Animal_Planet/t.jpg",
+		"height" : 80,
+		"width" : 80,
+		"contentType" : "image/jpeg"
+	},
+	"container" : {
+		"name" : "Entertainment",
+		"short_name" : "entertainment"
+	},
+	"submit_date" : 1268770337,
+	"topic" : {
+		"name" : "Television",
+		"short_name" : "television"
+	},
+	"promote_date" : 1268797203,
+	"id" : "19969655",
+	"media" : "news",
+	"diggs" : 303,
+	"description" : "An idea long overdue: a Mike Tyson reality show.",
+	"link" : "http://backporch.fanhouse.com/2010/03/16/mike-tyson-to-host-reality-show-on-animal-planet/",
+	"user" : {
+		"name" : "ArrowheadAddict",
+		"registered" : 1177609972,
+		"fullname" : "At SXSW...Digging as much as I can",
+		"icon" : "http://digg.com/users/ArrowheadAddict/l.png",
+		"profileviews" : 19924
+	},
+	"status" : "popular",
+	"shorturl" : [
+		{
+			"short_url" : "http://digg.com/d31Ln1D",
+			"view_count" : 739
+		}
+	]
+}
+{
+	"_id" : ObjectId("4ba267dc238d3ba3ca000047"),
+	"href" : "http://digg.com/political_opinion/Daily_Show_Mick_Foley_Illustrates_the_Problem_with_Congress",
+	"title" : "Daily Show: Mick Foley Illustrates the Problem with Congress",
+	"comments" : 60,
+	"thumbnail" : {
+		"originalheight" : 360,
+		"originalwidth" : 480,
+		"src" : "http://digg.com/political_opinion/Daily_Show_Mick_Foley_Illustrates_the_Problem_with_Congress/t.jpg",
+		"height" : 80,
+		"width" : 80,
+		"contentType" : "image/jpeg"
+	},
+	"container" : {
+		"name" : "World & Business",
+		"short_name" : "world_business"
+	},
+	"submit_date" : 1268750402,
+	"topic" : {
+		"name" : "Political Opinion",
+		"short_name" : "political_opinion"
+	},
+	"promote_date" : 1268794202,
+	"id" : "19962225",
+	"media" : "videos",
+	"diggs" : 758,
+	"description" : "On last night's Daily Show, to explain Congress's endless cycle of hypocrisy, Wyatt Cenac brought out Mick Foley, who demonstrated that Washington politicians are really no different from pro wrestlers.",
+	"link" : "http://www.indecisionforever.com/2010/03/16/mick-foley-illustrates-the-problem-with-congress/",
+	"user" : {
+		"name" : "irfanmp",
+		"registered" : 1210944665,
+		"fullname" : "Irfan Polani",
+		"icon" : "http://digg.com/users/irfanmp/l.png",
+		"profileviews" : 72782
+	},
+	"status" : "popular",
+	"shorturl" : [
+		{
+			"short_url" : "http://digg.com/d31Ll5N",
+			"view_count" : 8424
+		}
+	]
+}
+{
+	"_id" : ObjectId("4ba267dc238d3ba3ca00004b"),
+	"href" : "http://digg.com/pets_animals/Confused_Lamb_Can_t_Find_Owner",
+	"title" : "Confused Lamb Can't Find Owner",
+	"comments" : 299,
+	"thumbnail" : {
+		"originalheight" : 140,
+		"originalwidth" : 210,
+		"src" : "http://digg.com/pets_animals/Confused_Lamb_Can_t_Find_Owner/t.jpg",
+		"height" : 80,
+		"width" : 80,
+		"contentType" : "image/jpeg"
+	},
+	"container" : {
+		"name" : "Offbeat",
+		"short_name" : "offbeat"
+	},
+	"submit_date" : 1268708411,
+	"topic" : {
+		"name" : "Pets & Animals",
+		"short_name" : "pets_animals"
+	},
+	"promote_date" : 1268791202,
+	"id" : "19951412",
+	"media" : "videos",
+	"diggs" : 2188,
+	"description" : "There's really no explanation for this.",
+	"link" : "http://www.break.com/index/confused-lamb-cant-find-owner.html",
+	"user" : {
+		"name" : "absolutelytrue",
+		"registered" : 1175391156,
+		"icon" : "http://digg.com/users/absolutelytrue/l.png",
+		"profileviews" : 59459
+	},
+	"status" : "popular",
+	"shorturl" : [
+		{
+			"short_url" : "http://digg.com/d31LiGy",
+			"view_count" : 45634
+		}
+	]
+}
+{
+	"_id" : ObjectId("4ba267dc238d3ba3ca000052"),
+	"href" : "http://digg.com/television/Syfy_Channel_Planning_New_Battlestar_Galactica_Spinoff",
+	"title" : "Syfy Channel Planning New 'Battlestar Galactica' Spinoff ",
+	"comments" : 202,
+	"thumbnail" : {
+		"originalheight" : 215,
+		"originalwidth" : 200,
+		"src" : "http://digg.com/television/Syfy_Channel_Planning_New_Battlestar_Galactica_Spinoff/t.jpg",
+		"height" : 80,
+		"width" : 80,
+		"contentType" : "image/jpeg"
+	},
+	"container" : {
+		"name" : "Entertainment",
+		"short_name" : "entertainment"
+	},
+	"submit_date" : 1268758930,
+	"topic" : {
+		"name" : "Television",
+		"short_name" : "television"
+	},
+	"promote_date" : 1268785802,
+	"id" : "19965556",
+	"media" : "news",
+	"diggs" : 587,
+	"description" : "Network and producers meeting, developing concept that will bring \"a return to the franchise's space-opera roots.\"",
+	"link" : "http://insidetv.aol.com/2010/03/16/syfy-eyes-new-battlestar-galactica-spinoff/",
+	"user" : {
+		"name" : "openthink",
+		"registered" : 1183090876,
+		"icon" : "http://digg.com/users/openthink/l.png",
+		"profileviews" : 74135
+	},
+	"status" : "popular",
+	"shorturl" : [
+		{
+			"short_url" : "http://digg.com/d31Llx6",
+			"view_count" : 6621
+		}
+	]
+}
+{
+	"_id" : ObjectId("4ba267dc238d3ba3ca000056"),
+	"href" : "http://digg.com/movies/The_Evil_Dead_in_60_Seconds_In_Claymation",
+	"title" : "'The Evil Dead' in 60 Seconds, In Claymation",
+	"comments" : 33,
+	"container" : {
+		"name" : "Entertainment",
+		"short_name" : "entertainment"
+	},
+	"submit_date" : 1268683231,
+	"topic" : {
+		"name" : "Movies",
+		"short_name" : "movies"
+	},
+	"promote_date" : 1268783404,
+	"id" : "19944561",
+	"media" : "videos",
+	"diggs" : 548,
+	"description" : "You haven't known the horrors of demonic possession until you've seen them in claymation.",
+	"link" : "http://insidemovies.moviefone.com/2010/03/15/evil-dead-in-60-seconds-claymation/",
+	"user" : {
+		"name" : "casspa",
+		"registered" : 1200078515,
+		"icon" : "http://digg.com/users/casspa/l.png",
+		"profileviews" : 51367
+	},
+	"status" : "popular",
+	"shorturl" : [
+		{
+			"short_url" : "http://digg.com/d31LgUT",
+			"view_count" : 4225
+		}
+	]
+}
+{
+	"_id" : ObjectId("4ba267dc238d3ba3ca000063"),
+	"href" : "http://digg.com/television/Breaking_Down_Jim_Henson_s_Character_Stereotypes_Chart",
+	"title" : "Breaking Down Jim Henson's Character Stereotypes (Chart)",
+	"comments" : 47,
+	"thumbnail" : {
+		"originalheight" : 588,
+		"originalwidth" : 1053,
+		"src" : "http://digg.com/television/Breaking_Down_Jim_Henson_s_Character_Stereotypes_Chart/t.jpg",
+		"height" : 80,
+		"width" : 80,
+		"contentType" : "image/jpeg"
+	},
+	"container" : {
+		"name" : "Entertainment",
+		"short_name" : "entertainment"
+	},
+	"submit_date" : 1268764559,
+	"topic" : {
+		"name" : "Television",
+		"short_name" : "television"
+	},
+	"promote_date" : 1268776803,
+	"id" : "19967741",
+	"media" : "images",
+	"diggs" : 603,
+	"description" : "You wouldn't think that so many different forms of children's entertainment could contain so many adult stereotypes. But they do. ",
+	"link" : "http://www.madatoms.com/site/blog/the-muppets-character-flaw-breakdown",
+	"user" : {
+		"name" : "rwbrinso",
+		"registered" : 1190730874,
+		"fullname" : "Back and Catching Up",
+		"icon" : "http://digg.com/users/rwbrinso/l.png",
+		"profileviews" : 21420
+	},
+	"status" : "popular",
+	"shorturl" : [
+		{
+			"short_url" : "http://digg.com/d31LmWL",
+			"view_count" : 7631
+		}
+	]
+}
+{
+	"_id" : ObjectId("4ba2681f238d3ba3ca00006f"),
+	"href" : "http://digg.com/general_sciences/TED_Suspended_Animation_Is_Within_Our_Grasp",
+	"title" : "TED: Suspended Animation Is Within Our Grasp ",
+	"comments" : 42,
+	"thumbnail" : {
+		"originalheight" : 291,
+		"originalwidth" : 389,
+		"src" : "http://digg.com/general_sciences/TED_Suspended_Animation_Is_Within_Our_Grasp/t.jpg",
+		"height" : 80,
+		"width" : 80,
+		"contentType" : "image/jpeg"
+	},
+	"container" : {
+		"name" : "Science",
+		"short_name" : "science"
+	},
+	"submit_date" : 1268741236,
+	"topic" : {
+		"name" : "General Sciences",
+		"short_name" : "general_sciences"
+	},
+	"promote_date" : 1268808002,
+	"id" : "19959138",
+	"media" : "videos",
+	"diggs" : 480,
+	"description" : "Mark Roth studies suspended animation: the art of shutting down life processes and then starting them up again. It's wild stuff, but it's not science fiction. Induced by careful use of an otherwise toxic gas, suspended animation can potentially help trauma and heart attack victims survive long enough to be treated.",
+	"link" : "http://www.ted.com/talks/mark_roth_suspended_animation.html?awesm=on.ted.com_8CSb&utm_campaign=mark_roth_suspended_animation&utm_medium=on.ted.com-twitter&utm_source=direct-on.ted.com&utm_content=ted.com-talkpage",
+	"user" : {
+		"name" : "MarkBrent",
+		"registered" : 1235702165,
+		"fullname" : "BACK ACTIVELY DIGGING - Mark Brent",
+		"icon" : "http://digg.com/users/MarkBrent/l.png",
+		"profileviews" : 34147
+	},
+	"status" : "popular",
+	"shorturl" : [
+		{
+			"short_url" : "http://digg.com/d31LkHa",
+			"view_count" : 2236
+		}
+	]
+}
+{
+	"_id" : ObjectId("4ba2681f238d3ba3ca000074"),
+	"href" : "http://digg.com/pets_animals/Confused_Lamb_Can_t_Find_Owner",
+	"title" : "Confused Lamb Can't Find Owner",
+	"comments" : 299,
+	"thumbnail" : {
+		"originalheight" : 140,
+		"originalwidth" : 210,
+		"src" : "http://digg.com/pets_animals/Confused_Lamb_Can_t_Find_Owner/t.jpg",
+		"height" : 80,
+		"width" : 80,
+		"contentType" : "image/jpeg"
+	},
+	"container" : {
+		"name" : "Offbeat",
+		"short_name" : "offbeat"
+	},
+	"submit_date" : 1268708411,
+	"topic" : {
+		"name" : "Pets & Animals",
+		"short_name" : "pets_animals"
+	},
+	"promote_date" : 1268791202,
+	"id" : "19951412",
+	"media" : "videos",
+	"diggs" : 2188,
+	"description" : "There's really no explanation for this.",
+	"link" : "http://www.break.com/index/confused-lamb-cant-find-owner.html",
+	"user" : {
+		"name" : "absolutelytrue",
+		"registered" : 1175391156,
+		"icon" : "http://digg.com/users/absolutelytrue/l.png",
+		"profileviews" : 59461
+	},
+	"status" : "popular",
+	"shorturl" : [
+		{
+			"short_url" : "http://digg.com/d31LiGy",
+			"view_count" : 45634
+		}
+	]
+}
+{
+	"_id" : ObjectId("4ba2681f238d3ba3ca000077"),
+	"href" : "http://digg.com/movies/The_Evil_Dead_in_60_Seconds_In_Claymation",
+	"title" : "'The Evil Dead' in 60 Seconds, In Claymation",
+	"comments" : 33,
+	"container" : {
+		"name" : "Entertainment",
+		"short_name" : "entertainment"
+	},
+	"submit_date" : 1268683231,
+	"topic" : {
+		"name" : "Movies",
+		"short_name" : "movies"
+	},
+	"promote_date" : 1268783404,
+	"id" : 19944561,
+	"media" : "videos",
+	"diggs" : 548,
+	"description" : "You haven't known the horrors of demonic possession until you've seen them in claymation.",
+	"link" : "http://insidemovies.moviefone.com/2010/03/15/evil-dead-in-60-seconds-claymation/",
+	"user" : {
+		"name" : "casspa",
+		"registered" : 1200078515,
+		"icon" : "http://digg.com/users/casspa/l.png",
+		"profileviews" : 51367
+	},
+	"status" : "popular",
+	"shorturl" : [
+		{
+			"short_url" : "http://digg.com/d31LgUT",
+			"view_count" : 4225
+		}
+	]
+}
+{
+	"_id" : ObjectId("4ba2681f238d3ba3ca000083"),
+	"href" : "http://digg.com/television/The_13_Best_South_Park_Catch_Phrases",
+	"title" : "The 13 Best 'South Park' Catch Phrases",
+	"comments" : 110,
+	"thumbnail" : {
+		"originalheight" : 259,
+		"originalwidth" : 373,
+		"src" : "http://digg.com/television/The_13_Best_South_Park_Catch_Phrases/t.jpg",
+		"height" : 80,
+		"width" : 80,
+		"contentType" : "image/jpeg"
+	},
+	"container" : {
+		"name" : "Entertainment",
+		"short_name" : "entertainment"
+	},
+	"submit_date" : 1268707286,
+	"topic" : {
+		"name" : "Television",
+		"short_name" : "television"
+	},
+	"promote_date" : 1268764203,
+	"id" : 19951134,
+	"media" : "videos",
+	"diggs" : 555,
+	"description" : "#10. 'Respect my authority!' - Cartman",
+	"link" : "http://www.buddytv.com/articles/south-park/best-south-park-catch-phrases-35209.aspx",
+	"user" : {
+		"name" : "skored",
+		"registered" : 1139344512,
+		"icon" : "http://digg.com/users/skored/l.png",
+		"profileviews" : 97721
+	},
+	"status" : "popular",
+	"shorturl" : [
+		{
+			"short_url" : "http://digg.com/d31LiCU",
+			"view_count" : 6340
+		}
+	]
+}
+bye

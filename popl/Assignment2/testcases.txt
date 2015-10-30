@@ -1,0 +1,133 @@
+%% New Testcases: shubham
+[localvar ident(a) [[localvar ident(b) [localvar ident(z) [ bind ident(z) [record literal(a1) [[literal(feature1) ident(a)] [literal(feature2) ident(b)]]] ] ]] [ bind ident(a) literal(10)]] ]
+
+[localvar ident(x) [bind ident(x) [record literal(a) [[literal(feature1) literal(1)] [literal(feature2) ident(x)]]]]]
+
+
+[localvar ident(x) [localvar ident(y) [ [localvar ident(x) [bind ident(x) ident(y)] ][bind ident(x) ident(y)]] ]]
+
+[localvar ident(x) [localvar ident(y) [ [localvar ident(x) [bind ident(x) ident(y)] ][bind ident(x) ident(y)] [bind ident(x) literal(42)] ] ]]
+
+[localvar ident(w) [localvar ident(z) [localvar ident(x)  [localvar ident(y)[ [[bind ident(z) [record literal(a) [[literal(feature1) literal(1)] [literal(feature2) ident(w)]]]  ] [bind ident(w) [record literal(a) [[literal(feature1) literal(1)] [literal(feature2) ident(z)]]]  ]] [bind ident(z) ident(w)]  ]  ]  ]  ]  ]
+
+[localvar ident(w) [localvar ident(z) [localvar ident(x)  [localvar ident(y)[ [[bind ident(z) [record literal(a) [[literal(feature1) literal(1)] [literal(feature2) ident(z)]]]  ] [bind ident(w) [record literal(a) [[literal(feature1) literal(1)] [literal(feature2) ident(w)]]]  ]] [bind ident(z) ident(w)]  ]  ]  ]  ]  ]
+
+[localvar ident(w) [localvar ident(z) [localvar ident(x)  [localvar ident(y)[ [[bind ident(z) [record literal(a) [[literal(feature1) ident(x)] [literal(feature3) ident(y)]]]  ] [bind ident(w) [record literal(a) [[literal(feature1) literal(1)] [literal(feature2) literal(2)]]]  ]] [bind ident(z) ident(w)]  ]  ]  ]  ]  ]
+   
+[localvar ident(u) [ [bind ident(u) literal(1==2)]  [ localvar ident(z)  [  [nop] [localvar ident(x)[localvar ident(y)[localvar ident(d)[ conditional ident(u) [bind ident(d) literal(inIf)] [bind ident(d) literal(inElse)] ]]] ] ] ] ]]
+
+Input =[localvar ident(f)  [localvar ident(a) [[nop] [localvar ident(b) [ [bind ident(b) literal(t1) ][localvar ident(z) [[ bind ident(z) [record literal(a1) [[literal(feature1) ident(a)] [literal(feature2) ident(b)]]] ] [match ident(z) [record literal(a1) [[literal(feature1) literal(h)] [literal(feature2) literal(t)]]] [bind ident(f) literal(s1)] [bind ident(f) literal(s2)] ] ] ]]] ] ] ]
+
+Input = [localvar ident(x)        [localvar ident(y)   [localvar ident(z)   [[bind ident(y) literal(1)]    [bind ident(z) literal(2)]    [bind ident(x) [record literal(a) [[literal(f1) ident(y)] [literal(f2) ident(z)]]]]     [match ident(x) [record literal(a) [[literal(f1) ident(a)] [literal(f2) literal(22)]]]     [localvar ident(c) [bind ident(a) ident(c)]]      [bind ident(a) literal(10)]    ]    ]  ]        ]       ]
+
+Input   =  [localvar ident(x) [bind ident(x) [record literal(a) [[feature(1) literal(1)] [feature(2) ident(x)]]]]]
+
+Input = [ localvar ident(z)  [localvar ident(a) [localvar ident(b) [ [localvar ident(x)[ [bind ident(x) [procedure [ident(a)] [bind ident(a) ident(b)] ] ] [[bind ident(x) ident(z)] [apply ident(z) ident(a)]]  ] ] ]]] ]
+
+Input = [ localvar ident(z)  [localvar ident(a) [localvar ident(b) [ [localvar ident(x)[ [bind ident(x) [procedure [ident(x)] [bind ident(x) ident(b)] ] ] [[bind ident(x) ident(z)] [apply ident(z) ident(a)]]  ] ] ]]] ]
+   
+Input = [ localvar ident(z)  [localvar ident(a) [localvar ident(b) [ [localvar ident(x)[ [bind ident(x) [procedure [ident(x)] [apply ident(x) ident(b)] ] ] [[bind ident(x) ident(z)] [apply ident(z) ident(a)]]  ] ] ]]] ]
+
+
+%% Tests
+
+%% A test of cycles.
+ [localvar ident(foo)
+  [localvar ident(bar)
+   [[bind ident(foo) [record literal(person) [literal(name) ident(foo)]]]
+    [bind ident(bar) [record literal(person) [literal(name) ident(bar)]]]
+    [bind ident(foo) ident(bar)]]]]
+
+%% Another test of cycles.
+ [localvar ident(foo)
+  [localvar ident(bar)
+   [[bind ident(foo) [record literal(person) [literal(name) ident(bar)]]]
+    [bind ident(bar) [record literal(person) [literal(name) ident(foo)]]]
+    [bind ident(foo) ident(bar)]]]]
+
+
+%% Test of procedures, with a closure.
+
+   [localvar ident(foo)
+    [localvar ident(bar)
+     [localvar ident(quux)
+      [bind ident(bar) [subr [ident(baz)]
+        [bind [record literal(person) [literal(age) ident(foo)]] 
+              ident(baz)]
+              [bind ident(foo) literal(123)]]
+       [apply ident(bar) ident(quux)]
+       [bind [record literal(person) [literal(age) literal(40)]] ident(quux)]
+       %% We'll check whether foo has been assigned the value by
+       %% raising an exception here
+       [bind literal(42) ident(foo)]]]]]
+
+
+%% Test a successful case match.
+ [localvar ident(foo)
+  [localvar ident(result)
+   [[bind ident(foo) [record literal(bar)
+                       [literal(baz) literal(42)]
+                       [literal(quux) literal(314)]]]
+    [casecheck ident(foo) [record literal(bar)
+                           [literal(baz) ident(fortytwo)]
+                           [literal(quux) ident(pitimes100)]]
+     [bind ident(result) ident(fortytwo)] %% if matched
+     [bind ident(result) literal(314)]] %% if not matched
+    %% This will raise an exception if result is not 42
+    [bind ident(result) literal(42)]
+    [donothing]]]]
+
+%% Test a failing case match.
+
+ [localvar ident(foo)
+  [localvar ident(bar)
+   [localvar ident(baz)
+    [[bind ident(foo) ident(bar)]
+     [bind literal(20) ident(bar)]
+     [casecheck ident(foo) literal(21)
+      [bind ident(baz) literal(t)]
+      [bind ident(baz) literal(f)]]
+     %% Check
+     [bind ident(baz) literal(f)]
+     [donothing]]]]]
+
+
+%% Test a successful if.
+
+ [localvar ident(foo)
+  [localvar ident(result)
+   [[bind ident(foo) literal(t)]
+    [ifcheck ident(foo)
+     [bind ident(result) literal(t)]
+     [bind ident(result) literal(f)]]
+    %% Check
+    [bind ident(result) literal(t)]]]]
+
+
+%% Test a failing if.
+
+ [localvar ident(foo)
+  [localvar ident(result)
+   [[bind ident(foo) literal(f)]
+    [ifcheck ident(foo)
+     [bind ident(result) literal(t)]
+     [bind ident(result) literal(f)]]
+    %% Check
+    [bind ident(result) literal(f)]]]]
+
+
+%% One more case check, this time with feature names as identifiers.
+
+ [localvar ident(foo)
+  [localvar ident(bar)
+   [localvar ident(baz)
+    [localvar ident(result)
+     [[bind ident(foo) literal(person)]
+      [bind ident(bar) literal(age)]
+      [bind ident(baz) [record literal(person) [literal(age) literal(25)]]]
+      [casecheck ident(baz) [record ident(foo) [ident(bar) ident(quux)]]
+       [bind ident(result) ident(quux)]
+       [bind ident(result) literal(f)]]
+      %% Check
+      [bind ident(result) literal(25)]]]]]]
+

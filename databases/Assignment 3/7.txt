@@ -1,0 +1,1 @@
+db.scores.update({'score': {"$lt": 60}, 'name' : 'exam'}, {'$inc': {score: 10}},false, true);

@@ -1,0 +1,6 @@
+MongoDB shell version: 3.0.1
+connecting to: test
+switched to db training
+{ "score" : 50 }
+{ "score" : 99 }
+bye

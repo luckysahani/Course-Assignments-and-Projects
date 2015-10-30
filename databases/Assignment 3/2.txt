@@ -1,0 +1,3 @@
+use training
+db.scores.find({},{score : 1}).sort({score : -1}).limit(1);
+db.scores.find({},{score : 1}).sort({score : 1}).limit(1);

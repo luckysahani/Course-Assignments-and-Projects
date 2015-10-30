@@ -1,0 +1,15 @@
+MongoDB shell version: 3.0.1
+connecting to: test
+switched to db training
+switched to db digg
+{ "_id" : ObjectId("4ba267dc238d3ba3ca000042"), "topic" : { "name" : "Television" }, "media" : "news" }
+{ "_id" : ObjectId("4ba267dc238d3ba3ca000047"), "topic" : { "name" : "Political Opinion" }, "media" : "videos" }
+{ "_id" : ObjectId("4ba267dc238d3ba3ca00004b"), "topic" : { "name" : "Pets & Animals" }, "media" : "videos" }
+{ "_id" : ObjectId("4ba267dc238d3ba3ca000052"), "topic" : { "name" : "Television" }, "media" : "news" }
+{ "_id" : ObjectId("4ba267dc238d3ba3ca000056"), "topic" : { "name" : "Movies" }, "media" : "videos" }
+{ "_id" : ObjectId("4ba267dc238d3ba3ca000063"), "topic" : { "name" : "Television" }, "media" : "images" }
+{ "_id" : ObjectId("4ba2681f238d3ba3ca00006f"), "topic" : { "name" : "General Sciences" }, "media" : "videos" }
+{ "_id" : ObjectId("4ba2681f238d3ba3ca000074"), "topic" : { "name" : "Pets & Animals" }, "media" : "videos" }
+{ "_id" : ObjectId("4ba2681f238d3ba3ca000077"), "topic" : { "name" : "Movies" }, "media" : "videos" }
+{ "_id" : ObjectId("4ba2681f238d3ba3ca000083"), "topic" : { "name" : "Television" }, "media" : "videos" }
+bye

@@ -1,0 +1,3 @@
+use lucky
+db.things.save({a:"hi",addr:{street:"l",home:"lak"},fruit:["apple","banans"]})
+db.things.find().pretty()

@@ -1,0 +1,45 @@
+\documentclass[a4paper]{article}
+\usepackage[english]{babel}
+\usepackage{multicol}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[colorinlistoftodos]{todonotes}
+\title{Principle of Data Base Systems : Assignment 1}
+\date{\today}
+\author{Lucky Sahani}
+\begin{document}
+\maketitle
+
+\section{Question 2}
+\label{sec:q1}
+{\bf Question :} Identify dependencies (trivial, fully functional, transitive, multivalued) in the context of  academic system at IIT Kanpur. 
+\subsection{Trivial Dependencies}
+\begin{itemize}
+\item (Name, Roll Number) -$>$ Name
+\item (Course Name, Course Code) -$>$ Course Name
+\item (Roll No., CPI) -$>$ CPI
+\item (Name , Date of Birth) -$>$ Date of Birth
+\end{itemize}
+
+\subsection{Fully Functional Dependencies}
+\begin{itemize}
+\item Course Number -$>$ (Course Name, Instructor, Credits, Prerequisite)
+\item Department Name -$>$ (Department Code, Department Area)
+\item (Course No., Day) -$>$ (Lecture Time, Lecture Location)
+\item Roll No. -$>$ (Name, Email, Address, CPI, Department, Sex)
+\end{itemize}
+
+\subsection{Transitive Dependencies}
+\begin{itemize}
+\item 1
+\end{itemize}
+
+\subsection{Multi valued Dependencies}
+\begin{itemize}
+\item Course No. -$>$ Instructor
+\item Course No. -$>$ Reference Books
+\end{itemize}
+\end{document}

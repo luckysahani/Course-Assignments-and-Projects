@@ -1,0 +1,8 @@
+Q1. Design a relational schema for an enterprise(hospital,school,bank). Also include an ER Model in your 
+submission.  
+Useful resources: https://www.draw.io/
+
+
+Q2. Identify dependencies (trivial, fully functional, transitive, multivalued) in the context of 
+academic system at IIT Kanpur. Please note that this is an open ended problem, marks will be 
+awarded for complete and meaningful submissions.

@@ -1,0 +1,11 @@
+MongoDB shell version: 3.0.1
+connecting to: test
+switched to db training
+switched to db digg
+switched to db training
+WriteResult({ "nMatched" : 626, "nUpserted" : 0, "nModified" : 626 })
+WriteResult({ "nMatched" : 1231, "nUpserted" : 0, "nModified" : 1231 })
+WriteResult({ "nMatched" : 1143, "nUpserted" : 0, "nModified" : 1143 })
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
+bye

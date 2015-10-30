@@ -1,0 +1,6 @@
+MongoDB shell version: 2.4.9
+connecting to: test
+switched to db training
+{ "_id" : ObjectId("4c90f2543d937c033f42471c"), "score" : 99 }
+{ "_id" : ObjectId("4c90f2543d937c033f424701"), "score" : 50 }
+bye

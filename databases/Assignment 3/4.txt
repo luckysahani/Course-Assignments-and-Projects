@@ -1,0 +1,2 @@
+use digg
+db.stories.find({$or : [{"topic.name" : "Television"}, {"media" : "videos"}]}).skip(5).limit(10).pretty();

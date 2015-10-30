@@ -1,0 +1,2 @@
+use digg
+db.stories.find({ "media" : {$in: ['news','images']}, 'topic.name' : 'Comedy'}).pretty()

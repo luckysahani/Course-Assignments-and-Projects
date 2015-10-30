@@ -1,0 +1,2 @@
+db.scores.update({'score': {"$gt": 90}}, {'$set': {grade: "A"}}, false, true);
+db.scores.update({'score': {"$gt": 80, $lte: 90}}, {'$set': {grade: "B"}}, false, true);

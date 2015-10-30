@@ -1,0 +1,21 @@
+% ------------------------------------
+% CS350 Assignment 2
+%
+% Authors:	Archit Rathore 		12152
+%			Lucky Sahani		12383
+%			Shubham Agarwal		12687
+% ------------------------------------
+
+Assumptions: The input is assumed to be in the simplified AST tree
+form as described in the problem statement. Please set the following
+option in the Oz browser for proper rendering of strings:
+	'Oz Browser' --> 'Options' --> 'Representation..' 
+	--> Check the 'String' checkbox
+
+% ------------------------------------
+
+Parts Done:
+1,2,3,4a
+
+% ------------------------------------
+

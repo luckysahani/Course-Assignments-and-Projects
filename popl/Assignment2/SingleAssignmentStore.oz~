@@ -1,0 +1,8 @@
+declare
+fun {RetrieveFromSAS X}
+   case X
+   of unbound then equivalence(X)
+   [] equivalence(Y) then {RetrieveFromSAS Y}
+   else X
+   end
+end

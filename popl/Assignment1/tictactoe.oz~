@@ -1,0 +1,46 @@
+functor
+import
+    Browser(browse:Browse)
+    System(showInfo:Print)
+
+define
+	local Position CheckVictory GetRow GetCellVal GetValue in
+
+		fun {GetCellVal List Yindex}
+			if Yindex == 0 then List.1
+			else
+				case List
+				of nil then nil
+				[] H|T then {GetCellVal T Yindex-1}
+				end
+			end
+		end
+		fun {GetRow List Xindex}
+			if Xindex == 0 then List.1
+			else
+				case List
+				of nil then nil
+				[] H|T then {GetRow T  Xindex-1}
+				end
+			end
+		end
+
+		fun {GetValue List Xindex Yindex}
+			{GetCellVal {GetRow List Xindex} Yindex}
+		end
+		
+		fun {CheckVictory List Val Xindex Yindex DeltaX DeltaY}
+			if Val == 's' then false
+			elseif {Or (Xindex > 2) (Yindex > 2) } then true 
+			elseif {Or (Xindex < 0) (Yindex < 0 ) } then true
+			elseif {Not ({GetValue List Xindex Yindex} == Val) } then false
+			else
+				{CheckVictory List Val Xindex+DeltaX Yindex+DeltaX DeltaX DeltaY}
+			end
+		end
+		Position = [['o' 'o' 'x'] ['x' 'x' 'x'] ['o' 'o' 'o']]
+%		{Browse {GetValue Position 0 1 }}
+
+		{Browse {CheckVictory Position 'o' 0 0 0 1}}
+	end
+end

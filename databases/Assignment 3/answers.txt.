@@ -1,0 +1,31 @@
+// 1. Find all scores less than 65. 
+use training
+db.scores.find( { score: { $lt: 65 }} );
+
+// 2. Find the lowest quiz score. Find the highest quiz score. 
+use training
+db.scores.find({}).sort({score: -1}).limit(1);
+db.scores.find({}).sort({score: 1}).limit(1);
+
+// 3. Write a query to find all digg stories where the view count is greater than 1000. 
+use digg
+db.stories.find({ "shorturl.view_count" : { $gt : 1000 }}).count();
+db.stories.find({ "shorturl.view_count" : { $gt : 1000 }});
+
+// 4. Query for all digg stories whose media type is either 'news' or 'images' and where the topic name is 'Comedy’.
+use digg
+db.stories.find({'topic.name' : 'Comedy', media: { $in : ['news', 'images']}}).count();
+db.stories.find({'topic.name' : 'Comedy', media: { $in : ['news', 'images']}});
+
+// 5. Find all digg stories where the topic name is 'Television' or the media type is 'videos'. Skip the first 5 results, and limit the result set to 10.
+db.stories.find({$or : [ {'topic.name' : 'Television' } , { media: 'videos' } ] }).skip(5).limit(10);
+
+// 1.  Set the proper 'grade' a
+db.scores.update({'score': {"$gte": 90}}, {'$set': {grade: "A"}}, false, true);
+db.scores.update({'score': {"$gte": 80, $lte: 90}}, {'$set': {grade: "B"}}, false, true);
+
+// 2.  You're being nice
+db.scores.update(
+	{'score': {"$lte": 60}, 'name' : 'exam'}, 
+	{'$inc': {score: 10}},
+	false, true);

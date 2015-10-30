@@ -1,0 +1,13 @@
+
+
+local Interpreter  in
+	fun {Interpreter Program}
+		case Program
+		of nil then nil
+		[] localvar | T then
+			{Browse T}
+		end
+	end
+	{Browse {Interpreter [localvar ident(x)[localvar ident(y)]]}}
+
+end

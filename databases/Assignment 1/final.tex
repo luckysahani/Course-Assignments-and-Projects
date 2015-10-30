@@ -1,0 +1,65 @@
+\documentclass[a4paper]{article}
+\usepackage[english]{babel}
+\usepackage{multicol}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{enumitem}
+
+\usepackage[colorinlistoftodos]{todonotes}
+
+\title{Principle of Data Base Systems : Assignment 1}
+\date{\today}
+\author{Lucky Sahani}
+
+\begin{document}
+\maketitle
+
+\section{Question 2}
+\label{sec:q1}
+{\bf Question :} Identify dependencies (Trivial, Fully Functional, Transitive, Multi-valued) in the context of  academic system at IIT Kanpur. 
+\subsection{Trivial Dependencies}
+A trivial functional dependency occurs when you describe a functional dependency of an attribute on a collection of attributes that includes the original attribute i.e it is only a trivial functional dependency when a subset of attributes depends from the full set. \\Definition of trivial functional dependency: Example.$: (a,b)$ depends from $(a,b,c)$ attributes.
+\begin{itemize}
+\item (Name, Roll Number) -$>$ Name
+\item (Course Name, Course Code) -$>$ Course Name
+\item (Roll No., CPI) -$>$ CPI
+\item (Name , Date of Birth) -$>$ Date of Birth
+\item (Roll No., Email) -$>$ Email
+\end{itemize}
+
+\subsection{Fully Functional Dependencies}
+A full functional dependency occurs when you already meet the requirements for a functional dependency and the set of attributes on the left side of the functional dependency statement cannot be reduced any farther.
+\begin{itemize}
+\item Course Number -$>$ (Course Name, Instructor, Credits, Prerequisite)
+\item Department Name -$>$ (Department Code, Department Area)
+\item Lab Course No. -$>$ (Lab Location, Lab Department)
+\item (Course No., Day) -$>$ (Lecture Time, Lecture Location)
+\item Roll No. -$>$ (Name, Email, Address, CPI, Department, Sex)
+\end{itemize}
+
+\subsection{Transitive Dependencies}
+Transitive dependencies occur when there is an indirect relationship that causes a functional dependency.
+\begin{itemize}
+\item (Course, Roll No.) -$>$ Grade -$>$ (Pass/Fail/Not Done)
+\item (Roll No., Semester) -$>$ (Credits) -$>$(AP/not)
+\item Roll No. -$>$ Address -$>$ Hall No.
+\item Email -$>$ Roll No. -$>$ Name
+\item Roll No. -$>$ Hall -$>$ Warden-In-Charge
+\end{itemize}
+
+\subsection{Multi valued Dependencies}
+Multivalued dependencies occur when the presence of one or more rows in a table implies the presence of one or more other rows in that same table. 
+\begin{itemize}
+\item Course No. -$>$ Instructor
+\item Course No. -$>$ Reference Books
+\item Course, Book and Instructor : (Course-$>$Book) and (Course-$>$Lecturer)
+\item (Name, Address, Phones, Subjects Liked) :A Student’s phones are independent of
+the subject they like and each of a student’s phones appears with each of the subjects they like in all combinations
+\item (Course No., Labs No., Instructor) : There can be many labs and many instructor for a instructor.Hence, Redundant Information.
+\item (Course No, Student Roll No., Instructor) :Same as above
+
+\end{itemize}
+
+\end{document}
