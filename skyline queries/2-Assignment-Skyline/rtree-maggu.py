@@ -3,6 +3,8 @@
 import heapq
 from random import uniform
 import time
+import sys
+
 
 #check intersecting rectangles
 #return 0 if it is not intersecting
@@ -49,6 +51,8 @@ def merge(MBRa, MBRb):
 	for i in range(d, 2*d):
 		MBR.append(max(MBRa[i], MBRb[i]))
 
+	# print MBR,"\n",MBRa,"\n",MBRb
+	# sys.exit()
 	return MBR	
 
 def insert(root, Node):
@@ -313,8 +317,8 @@ if __name__ == '__main__':
 	root = RTree(minEle = blocksize/2, maxEle = blocksize)
 
 	#get input file of objects
-	infilename = 'sample_ind.txt'
-	outfilename = 'output_ind.txt'
+	infilename = 'sample_cor.txt'
+	outfilename = 'output_cor.txt'
 	inputfile = open(infilename, 'r')
 	n = []
 	for line in inputfile:
