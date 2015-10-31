@@ -114,6 +114,7 @@ print "Total running time =",total_time,"\n";
 print "Number of object-to-object comparisons = ",number_of_comparisions,"\n";
 print "Size of skyline set = ",len(skylines),"\n";
 
+print skylines
 #Printing the Skyline object indexes into a file
 with open("skyline_indexes.txt", "w+") as myfile:
 	for data in skylines:

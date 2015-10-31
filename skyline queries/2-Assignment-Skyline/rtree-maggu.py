@@ -310,7 +310,7 @@ if __name__ == '__main__':
 	startTime = time.time()
 	data = {}
 	#get dimension on which skylines are to be found and memory blocksize 	
-	queryfile = 'sample_query.txt'
+	queryfile = 'query2.txt'
 	dims = []
 	blocksize  = 2
 	root = RTree(minEle = blocksize/2, maxEle = blocksize)
@@ -318,8 +318,8 @@ if __name__ == '__main__':
 	
 
 	#get input file of objects
-	infilename = 'sample_cor.txt'
-	outfilename = 'output_cor.txt'
+	infilename = 'sample_ant.txt'
+	outfilename = 'output_ant.txt'
 	inputfile = open(infilename, 'r')
 	n = []
 	for line in inputfile:

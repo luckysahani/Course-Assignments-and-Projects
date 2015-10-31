@@ -15,7 +15,7 @@ with open('sample_query.txt') as f:
     temp_list = [[int(x) for x in line.split()] for line in f];
     dimensions_skyline_list = temp_list[0];
     window_maxsize = temp_list[1][0]
-with open('sample_ant.txt') as f:
+with open('sample_cor.txt') as f:
     data_list = [[float(x) for x in line.split()] for line in f];
 
 def compare(element_1,element_2):

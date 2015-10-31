@@ -1,0 +1,119 @@
+
+Running Time:
+=============================================================
+CORRELATED DATASET:
+------------------------------------------------------------
+
+	Query 1 Dimensions : 1	2	3	4	5
+	--------------------------------------------------------
+		BNL: 
+			Total running time(ms) = 4 
+			Number of object-to-object comparisons =  1603 
+			Size of skyline set =  13 
+
+		SFS:
+			Total running time(ms) = 6 
+			Number of object-to-object comparisons =  1101 
+			Size of skyline set =  13
+
+		BBS:
+			Total running time =1
+			Number of object-to-object comparisons = 428
+			Size of skyline set = 13
+
+	Query 2 Dimensions : 1	3
+	--------------------------------------------------------
+		BNL:
+			Total running time = 4 
+			Number of object-to-object comparisons =  1030 
+			Size of skyline set =  5 
+
+		SFS:
+			Total running time = 5 
+			Number of object-to-object comparisons =  1011 
+			Size of skyline set =  5
+
+		BBS:
+			Total running time =2
+			Number of object-to-object comparisons = 286
+			Size of skyline set = 5
+
+ANTI-CORRELATED DATASET:
+------------------------------------------------------------
+
+	Query 1 Dimensions : 1	2	3	4	5
+	--------------------------------------------------------
+		BNL: 
+			Total running time(ms) = 443 
+			Number of object-to-object comparisons =  335269 
+			Size of skyline set =  705
+
+		SFS:
+			Total running time(ms) = 338 
+			Number of object-to-object comparisons =  265134 
+			Size of skyline set =  705 
+
+		BBS:
+			Total running time =141
+			Number of object-to-object comparisons = 262618
+			Size of skyline set = 705
+
+	Query 2 Dimensions : 1	3
+	--------------------------------------------------------
+		BNL:
+			Total running time = 4 
+			Number of object-to-object comparisons =  1581 
+			Size of skyline set =  8
+
+		SFS:
+			Total running time = 4 
+			Number of object-to-object comparisons =  1089 
+			Size of skyline set =  8
+
+		BBS:
+			Total running time =5
+			Number of object-to-object comparisons = 1011
+			Size of skyline set = 8
+
+INDEPENDENT DATASET:
+------------------------------------------------------------
+	
+	Query 1 Dimensions : 1	2	3	4	5
+	--------------------------------------------------------
+		BNL: 
+			Total running time(ms) = 60 
+			Number of object-to-object comparisons =  35477 
+			Size of skyline set =  166 
+
+		SFS:
+			Total running time(ms) = 31 
+			Number of object-to-object comparisons =  17201 
+			Size of skyline set =  166 
+
+		BBS:
+			Total running time =14
+			Number of object-to-object comparisons = 17242
+			Size of skyline set = 166
+
+	Query 2 Dimensions : 1	3
+	--------------------------------------------------------
+		BNL:
+			Total running time = 3 
+			Number of object-to-object comparisons =  1359 
+			Size of skyline set =  9 
+
+		SFS:
+			Total running time = 5 
+			Number of object-to-object comparisons =  1104 
+			Size of skyline set =  9 
+
+		BBS:
+			Total running time =4
+			Number of object-to-object comparisons = 932
+			Size of skyline set = 9
+
+Conclusion:
+============================================================
+
+1.)The running time of BBS is much less than that of BNL and SFS
+2.)Number of object-to-object comparisons is much less in BBS (as compared to BNL and SFS) because it access only those nodes that may contain the skyline point and also, it down not visit the same node twice.
