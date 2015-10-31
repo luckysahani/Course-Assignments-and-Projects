@@ -4,6 +4,7 @@ import heapq
 from random import uniform
 import time
 import os
+from math import floor
 
 
 # Defining storage Object
@@ -354,13 +355,16 @@ if __name__ == '__main__':
 		pointer_size = temp_list[2][0]
 		key_size = temp_list[2][1]
 
-		print "key_size=",key_size,"\n pointer_size=",pointer_size,"\ndiskpagesize=",diskpagesize,"\n"
 	#Get data from input file
 	with open('sample_cor.txt') as f:
 		data_list = [[float(x) for x in line.split()] for line in f]
 
+	#Calculating the number of entries that can be stored in a page i.e the block size
+	# Number of index entries per leaf page = Floor( Page_size / (size(search key value) + size(reference to tuple))) 
+	blocksize = floor(diskpagesize/(pointer_size+key_size))
 
-	root = RTree(minimum_childs = blocksize/2, maximum_childs = blocksize)
+	#Initializing the root with the calculate blcoksize as its max childs
+	root = RTree(minimum_childs = int(blocksize)/2, maximum_childs = int(blocksize))
 	l = []
 	for data in data_list:
 		a= {}

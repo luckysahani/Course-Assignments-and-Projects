@@ -1,5 +1,5 @@
-Total running time =226
-Number of object-to-object comparisons = 607
+Total running time =1389
+Number of object-to-object comparisons = 428
 Size of skyline set = 13
 List of ids of the skyline objects in sorted manner : 
 51.0
