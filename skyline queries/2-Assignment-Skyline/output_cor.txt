@@ -1,5 +1,5 @@
-Total running time: 0.0200548171997 sec
-Comparisons: 1101
+Total running time: 0.227696895599 sec
+Comparisons: 607
 Size of skyline set: 13
 Ids of the skyline objects: 
 [51, 76, 243, 245, 252, 344, 383, 564, 569, 630, 731, 786, 949]

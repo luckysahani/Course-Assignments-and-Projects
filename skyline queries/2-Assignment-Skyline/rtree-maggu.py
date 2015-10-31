@@ -253,7 +253,7 @@ class RTree(object):
 				if S_new - S1 - S2 > a:
 					b1 = i
 					b2 = j
-					a = S_new - S1 - S2f
+					a = S_new - S1 - S2
 		n2 = self.leaves.pop(b2)
 		n2.parent = leaf1
 		leaf1.leaves.append(n2)
@@ -313,8 +313,9 @@ if __name__ == '__main__':
 	queryfile = 'sample_query.txt'
 	dims = []
 	blocksize  = 2
-	dims, blocksize = getBlockParametersDimension(queryfile, dims, blocksize)
 	root = RTree(minEle = blocksize/2, maxEle = blocksize)
+	dims, blocksize = getBlockParametersDimension(queryfile, dims, blocksize)
+	
 
 	#get input file of objects
 	infilename = 'sample_cor.txt'

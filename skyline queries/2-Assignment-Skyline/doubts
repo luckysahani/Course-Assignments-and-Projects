@@ -1,3 +1,2 @@
-why is min and max 4 and 8
-maggu dimensions defined and used d
-249 line d should be a
+The second line will contain the disk page in bytes and The third line will contain the sizes of the pointers and keys in bytes respectively.
+Compare the running time with those in Assignment 1.
