@@ -94,7 +94,6 @@ class RTree(object):
 			# 4. remove top entry e
 			some_object = q.pop()
 			# 5. if e is dominated by some point in S discard e
-			#print IsDominated_by_skylines(skylines,some_object.MBR,dimensions_skyline_list)
 			if (IsDominated_by_skylines(skylines,some_object.MBR,dimensions_skyline_list) == False):
 				# 7. if e is an intermediate entry
 				if some_object.level>0:
@@ -108,7 +107,6 @@ class RTree(object):
 				# 11. else // e is a data point
 				else :
 					# 12. insert ei into S
-					#print "Adding this object to skyline :",some_object.MBR,"\n"
 					skylines.append((some_object.index,some_object.MBR))
 		return skylines
 
@@ -229,7 +227,6 @@ def IsDominated_by_skylines(skyline_set,MBR_1,dimensions_skyline_list):
 def compare(element_1,element_2,dimensions_skyline_list):
 	flag1=0
 	flag2=0
-	#print element_1,element_2,dimensions_skyline_list
 	for j in dimensions_skyline_list:
 		i=j-1
 		if(element_1[i]>element_2[i]):
@@ -291,7 +288,6 @@ def merge(MBR_1,MBR_2):
 	#Initialize the new MBR
 	MBR=[]
 	total_number_of_dimensions=len(MBR_1)/2
-	#print len(MBR_1),"hi\n",MBR_1
 	#Merging the mim of all dimensions in this loop
 	for i in range(0,total_number_of_dimensions):
 		MBR.append(min(MBR_1[i],MBR_2[i]))
