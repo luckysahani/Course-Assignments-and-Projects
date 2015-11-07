@@ -188,5 +188,3 @@ if __name__ == '__main__':
 				myfile.write(str(current_flag)+'\t'+str(skyline)+'\n')
 		for skyline in skylines:
 			print current_flag,'\t',skyline
-
-
