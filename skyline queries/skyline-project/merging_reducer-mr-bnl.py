@@ -28,14 +28,9 @@ import numpy
 
 ##-------------- Division Job  ------------------##
 
-# Map Task
-def divison_mapper(input_data):
-	for point_i in input_data:
-		flag_i = calculate_subspace_flag(point_i)
-
 # Reduce Task
-
-
+def divison_reducer(input_data):
+	for flag_i in 
 ##-------------- Merging Job  ------------------##
 
 # Map Task
@@ -43,26 +38,24 @@ def divison_mapper(input_data):
 # Reduce Task
 
 
-#To calculate the subspace flag of each point
-def calculate_subspace_flag(point):
-	for i in range(0,len(point)):
-		if(point[i]>dbit_flag[i]):
-			result_flag[i]=1
-		else:
-			result_flag[i]=0
-	return result_flag
 
 if __name__ == '__main__':
 	
-	#inputfile initialized
-	inputfile="sample_data_1.txt"
+	#Initialize all variables here
+	data_tuple_with_flag=[]
 
-	#Get data from input file
-	with open(inputfile) as f:
-		data_list = [[float(x) for x in line.split()] for line in f]
-
+	#Get data from stdin
+	input_data = [[float(x) for x in line.split()] for line in sys.stdin]
+	
 	#initialize the dbit flag
-	dbit_flag = numpy.median(data_list,axis=0)
+	dbit_flag = numpy.median(input_data,axis=0)
 
 	#printing dflag value
 	print "Dbit flag is :",dbit_flag,"\n"
+
+	#calling divison_mapper
+	data_tuple_with_flag=divison_mapper()
+
+	#printing the resultant mapping
+	for data_tuple in data_tuple_with_flag:
+		print data_tuple
