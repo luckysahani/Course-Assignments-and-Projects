@@ -141,7 +141,7 @@ if __name__ == '__main__':
 	flag3=0;
 
 	#Create a new file to store the output
-	fo = open("divison_job_reducer_output.txt", "rw+");
+	fo = open("divison_job_reducer_output.txt", "w+");
 	fo.truncate();
 
 	# Variables used in thsi algorithm
