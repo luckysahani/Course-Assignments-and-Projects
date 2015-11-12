@@ -9,7 +9,7 @@
 # Map Task
 # for each point P i in data set S
 # for each attribute A j in P i
-# output (j, (A j , P i ’s byte offsets))
+# output (j, (A j , P i 's byte offsets))
 # Reduce Task
 # for each dimension k
 # generate sorted attribute list L k in descending order
@@ -36,12 +36,12 @@ import ast
 # Map Task
 if __name__ == '__main__':
 
-	for line in sys.stdin:
-		# remove leading and trailing whitespace
-		line = line.strip()
-		flag, point = line.split('\t')
-		flag  = ast.literal_eval(flag)
-		point  = ast.literal_eval(point)
-		tuple = [flag,point]
-		print None,'\t',tuple
+	# Get data from stdin
+	input_data = [[int(x) for x in line.split()] for line in sys.stdin]
+
+	number_of_clusters = 3
+
+	for j in range(0,len(input_data)):
+		point = input_data[j] 
+		print j % number_of_clusters,'\t',point
 			

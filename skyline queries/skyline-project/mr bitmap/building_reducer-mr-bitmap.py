@@ -88,9 +88,9 @@ if __name__ == '__main__':
 
 				bitslice={}
 				for i in range(0,len(sorted_distinct_input_set)):
-					index = number_of_distinct_elements - i 
+					index = number_of_distinct_elements - i-1 
 					# print sorted_distinct_input_set[number_of_distinct_elements-1]
-					bitslice[index]=[row[i] for row in array_of_all_bitvectors]
+					bitslice[sorted_distinct_input_set[index]]=[row[i] for row in array_of_all_bitvectors]
 					# print index,bitslice[index]
 				
 				# write bitmap to a file
@@ -129,9 +129,9 @@ if __name__ == '__main__':
 
 		bitslice={}
 		for i in range(0,len(sorted_distinct_input_set)):
-			index = number_of_distinct_elements - i 
+			index = number_of_distinct_elements - i-1 
 			# print sorted_distinct_input_set[number_of_distinct_elements-1]
-			bitslice[index]=[row[i] for row in array_of_all_bitvectors]
+			bitslice[sorted_distinct_input_set[index]]=[row[i] for row in array_of_all_bitvectors]
 			# print index,bitslice[index]
 		
 		# write bitmap to a file
