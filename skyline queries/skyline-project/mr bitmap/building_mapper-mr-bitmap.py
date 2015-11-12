@@ -34,17 +34,32 @@ from math import pow
 
 ##-------------- Building Job  ------------------##
 
-#to calculate an attribute byte offset
-def calculate_byte_offset(attribute_i):
-	# return ((int(attribute_i)).bit_length() + 7 )/8
-	# return (int(attribute_i)).bit_length()
-	for 
+# #to calculate an attribute byte offset
+# def calculate_byte_offset(attribute_i):
+# 	# return ((int(attribute_i)).bit_length() + 7 )/8
+# 	# return (int(attribute_i)).bit_length()
+# 	return None
+
 # Mapping Task
 if __name__ == '__main__':
 	
-	#Get data from stdin
-	input_data = [[float(x) for x in line.split()] for line in sys.stdin]
 	
-	for point in input_data:
+	# Get data from stdin
+	input_data = [[int(x) for x in line.split()] for line in sys.stdin]
+	
+
+	# #Storing number of dimensions
+	# dim = len(input_data[0])
+	
+	# # Store maximum value of each dimension in this variable
+	# max_val = [0]*dim 
+
+	# # Calculate the max value from input data
+	# for point in input_data:
+	# 	for i in range(0,len(point)):
+
+
+	for j in range(0,len(input_data)):
+		point = input_data[j] 
 		for i in range(0,len(point)):
-			print i, (point[i],calculate_byte_offset(point[i]))
+			print i,"\t",[point[i],j]
