@@ -36,13 +36,12 @@ import ast
 # Map Task
 if __name__ == '__main__':
 
-	with open('divison_job_reducer_output.txt') as f:
-		for line in f:
-			# remove leading and trailing whitespace
-			line = line.strip()
-			flag, point = line.split('\t')
-			flag  = ast.literal_eval(flag)
-			point  = ast.literal_eval(point)
-			tuple = [flag,point]
-			print None,'\t',tuple
+	for line in sys.stdin:
+		# remove leading and trailing whitespace
+		line = line.strip()
+		flag, point = line.split('\t')
+		flag  = ast.literal_eval(flag)
+		point  = ast.literal_eval(point)
+		tuple = [flag,point]
+		print None,'\t',tuple
 			

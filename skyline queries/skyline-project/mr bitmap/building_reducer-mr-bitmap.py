@@ -67,7 +67,7 @@ if __name__ == '__main__':
 				distinct_input_set = list (set ([attr[0] for attr in input_set_for_each_dim]))
 				sorted_distinct_input_set = sorted( distinct_input_set )
 				number_of_distinct_elements = len(sorted_distinct_input_set)
-				print current_dim,sorted_distinct_input_set,number_of_distinct_elements
+				# print current_dim,sorted_distinct_input_set,number_of_distinct_elements
 
 				dictionary_with_bitvector = {}
 
@@ -87,10 +87,10 @@ if __name__ == '__main__':
 				# 	print i
 
 				bitslice={}
-				for i in sorted_distinct_input_set:
-					index = number_of_distinct_elements - i + 1
+				for i in range(0,len(sorted_distinct_input_set)):
+					index = number_of_distinct_elements - i 
 					# print sorted_distinct_input_set[number_of_distinct_elements-1]
-					bitslice[index]=[row[i-1] for row in array_of_all_bitvectors]
+					bitslice[index]=[row[i] for row in array_of_all_bitvectors]
 					# print index,bitslice[index]
 				
 				# write bitmap to a file
@@ -105,11 +105,10 @@ if __name__ == '__main__':
 
 	# To output the key value pair along with dimension to be processed for calculating skyline
 	if current_dim == dim :
-		print current_dim,"\n\n\n\n\n"
 		distinct_input_set = list (set ([attr[0] for attr in input_set_for_each_dim]))
 		sorted_distinct_input_set = sorted( distinct_input_set )
 		number_of_distinct_elements = len(sorted_distinct_input_set)
-		print current_dim,sorted_distinct_input_set,number_of_distinct_elements
+		# print current_dim,sorted_distinct_input_set,number_of_distinct_elements
 
 		dictionary_with_bitvector = {}
 
@@ -129,10 +128,10 @@ if __name__ == '__main__':
 		# 	print i
 
 		bitslice={}
-		for i in sorted_distinct_input_set:
-			index = number_of_distinct_elements - i + 1
-			print sorted_distinct_input_set[number_of_distinct_elements-1]
-			bitslice[index]=[row[i-1] for row in array_of_all_bitvectors]
+		for i in range(0,len(sorted_distinct_input_set)):
+			index = number_of_distinct_elements - i 
+			# print sorted_distinct_input_set[number_of_distinct_elements-1]
+			bitslice[index]=[row[i] for row in array_of_all_bitvectors]
 			# print index,bitslice[index]
 		
 		# write bitmap to a file
