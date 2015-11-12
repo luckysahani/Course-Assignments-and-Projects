@@ -91,6 +91,6 @@ if __name__ == '__main__':
 		# print all_zeros,'\n',answer,'\n\n\n'
 
 		if(answer == all_zeros):
-			print point,'\n'
+			print point
 
 		
