@@ -50,7 +50,10 @@ if __name__ == '__main__':
 				bitmap[dim]={}
 			bitmap[dim][val]=BitVector.BitVector(bitlist = bitval) 
 			# bitmap.setdefault(dim, []).append([val,bitval])
-	# print bitmap
+	
+	# for key, v in bitmap.iteritems():
+	# 	for key2, v2 in bitmap[key].iteritems():
+	# 		print key,key2,v2
 
 	# input comes from STDIN
 	for line in sys.stdin:
@@ -59,11 +62,35 @@ if __name__ == '__main__':
 		
 		reducer, point = line.split('\t')
 		point = ast.literal_eval(point)
-		print '\n\n',point
+		# print '\n\n',point
 
+		bitwiseand =  bitmap[0][point[0]]
+		all_zeros =  BitVector.BitVector(size = bitwiseand.length())
+		bitwiseor =  BitVector.BitVector(size = bitwiseand.length())
 		for i in range(0,len(point)):
-			bitvalue = bitmap[i][point[i]]
-			print bitvalue
-			
+
+			# print bitmap[i][point[i]]
+			key_new = 9999
+			bitwiseand = bitwiseand & bitmap[i][point[i]]
+			for key, v in bitmap[i].iteritems():
+				# print key,v
+				if (key > point[i]) and (key_new >= key):
+					key_new = key
+				# print key_new,point[i]
+			if not(key_new == 9999):
+				bitwiseor  = bitwiseor | bitmap[i][key_new]
+				# print bitmap[i][key_new] 
+			else:
+				bitwiseor  = bitwiseor | all_zeros
+
+		answer = bitwiseand & bitwiseor
+		# print "Bitwise and = ",bitwiseand,"\nBitwise or  = ",bitwiseor,"\nResult      = ",answer
+
+		
+
+		# print all_zeros,'\n',answer,'\n\n\n'
+
+		if(answer == all_zeros):
+			print point,'\n'
 
 		
