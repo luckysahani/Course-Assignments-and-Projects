@@ -12,7 +12,7 @@
 # output (F i ,P i )
 # Reduce Task
 # for each subspace flag F i
-# compute local Skyline SP k using BNL
+# compute local Skyline SP k using SFS
 # output (F i , SP k ) in file t
 
 # Merging Job
@@ -20,7 +20,7 @@
 # for each point P i in file t
 # output (null, (F i , P i ))
 # Reduce Task
-# compute global Skyline SP k using BNL with pre-comparison
+# compute global Skyline SP k using SFS with pre-comparison
 # output (SP k , null)
 
 import os
@@ -32,6 +32,7 @@ import ast
 ##-------------- Merging Job  ------------------##
 # Map Task
 if __name__ == '__main__':
+
 	for line in sys.stdin:
 		# remove leading and trailing whitespace
 		line = line.strip()

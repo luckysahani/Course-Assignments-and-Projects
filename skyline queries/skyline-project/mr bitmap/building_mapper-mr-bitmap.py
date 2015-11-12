@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 #--------------PSEUDO CODE -----------------#
 
 # INPUT: the original data set S
@@ -35,7 +37,8 @@ from math import pow
 #to calculate an attribute byte offset
 def calculate_byte_offset(attribute_i):
 	# return ((int(attribute_i)).bit_length() + 7 )/8
-	return (int(attribute_i)).bit_length()
+	# return (int(attribute_i)).bit_length()
+	for 
 # Mapping Task
 if __name__ == '__main__':
 	

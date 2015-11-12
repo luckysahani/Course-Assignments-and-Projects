@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 #--------------PSEUDO CODE -----------------#
 
 # INPUT: the original data set S
@@ -60,7 +62,7 @@ if __name__ == '__main__':
 		if current_dim == dim :
 			input_set_for_each_dim.append(tuple)
 		else :
-			if current_flag != -1 :
+			if current_dim != -1 :
 
 
 
@@ -68,9 +70,9 @@ if __name__ == '__main__':
 				#write skylines to a file
 				with open("building_job_reducer_output.txt", "a") as myfile:
 					for skyline in skylines:
-						myfile.write(str(current_flag)+'\t'+str(skyline)+'\n')
+						myfile.write(str(current_dim)+'\t'+str(skyline)+'\n')
 				for skyline in skylines:	
-					print current_flag,'\t',skyline
+					print current_dim,'\t',skyline
 			input_set_for_each_dim = []
 			skylines = []
 			current_dim = dim
@@ -87,6 +89,6 @@ if __name__ == '__main__':
 
 		with open("building_job_reducer_output.txt", "a") as myfile:
 			for skyline in skylines:
-				myfile.write(str(current_flag)+'\t'+str(skyline)+'\n')
+				myfile.write(str(current_dim)+'\t'+str(skyline)+'\n')
 		for skyline in skylines:
-			print current_flag,'\t',skyline
+			print current_dim,'\t',skyline

@@ -12,7 +12,7 @@
 # output (F i ,P i )
 # Reduce Task
 # for each subspace flag F i
-# compute local Skyline SP k using BNL
+# compute local Skyline SP k using SFS
 # output (F i , SP k ) in file t
 
 # Merging Job
@@ -20,7 +20,7 @@
 # for each point P i in file t
 # output (null, (F i , P i ))
 # Reduce Task
-# compute global Skyline SP k using BNL with pre-comparison
+# compute global Skyline SP k using SFS with pre-comparison
 # output (SP k , null)
 
 import os
@@ -28,7 +28,8 @@ import time
 import sys
 import numpy
 import ast
-
+import math
+from operator import itemgetter
 
 # To compare two numbers and return which one is dominant over other 
 def compare(element_1,element_2):
@@ -126,6 +127,23 @@ def find_skylines_using_BNL(sample_data):
 		print "File data=",temp_data_list,"\n";	
 		find_skylines_using_BNL(temp_data_list);
 
+# To calculate the entropy for each point based on the entropy function
+def entropy(data):
+	entropy=0;
+	for i in data:
+		entropy=entropy+math.log(1+i);
+	return entropy;
+
+# To find skyline using SFS
+def find_skylines_using_SFS(sample_data):
+	temp_data_list=[];
+	final_data_list_2=[];
+	for data in sample_data:
+		temp_data_list.append([entropy(data),data]);
+	final_data_list_1=sorted(temp_data_list,key=itemgetter(0));
+	for data in final_data_list_1:
+		final_data_list_2.append(data[1]);
+	find_skylines_using_BNL(final_data_list_2);
 
 ##-------------- Division Job  ------------------##
 # Hadoop sorts mapper output by key (here: flag) before it is passed to the reducer
@@ -168,7 +186,7 @@ if __name__ == '__main__':
 				#write skylines to a file
 				#print "Input Set = ",input_set_for_each_flag
 				initialize_var()
-				find_skylines_using_BNL(input_set_for_each_flag)
+				find_skylines_using_SFS(input_set_for_each_flag)
 				with open("divison_job_reducer_output.txt", "a") as myfile:
 					for skyline in skylines:
 						myfile.write(str(current_flag)+'\t'+str(skyline)+'\n')
@@ -183,7 +201,7 @@ if __name__ == '__main__':
 	if current_flag == flag :
 		#print "Input Set = ",input_set_for_each_flag
 		initialize_var()
-		find_skylines_using_BNL(input_set_for_each_flag)
+		find_skylines_using_SFS(input_set_for_each_flag)
 		with open("divison_job_reducer_output.txt", "a") as myfile:
 			for skyline in skylines:
 				myfile.write(str(current_flag)+'\t'+str(skyline)+'\n')

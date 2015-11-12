@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 #--------------PSEUDO CODE -----------------#
 
 # INPUT: the original data set S

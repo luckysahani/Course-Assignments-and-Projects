@@ -12,7 +12,7 @@
 # output (F i ,P i )
 # Reduce Task
 # for each subspace flag F i
-# compute local Skyline SP k using BNL
+# compute local Skyline SP k using SFS
 # output (F i , SP k ) in file t
 
 # Merging Job
@@ -20,7 +20,7 @@
 # for each point P i in file t
 # output (null, (F i , P i ))
 # Reduce Task
-# compute global Skyline SP k using BNL with pre-comparison
+# compute global Skyline SP k using SFS with pre-comparison
 # output (SP k , null)
 
 import os
@@ -28,25 +28,45 @@ import time
 import sys
 import numpy
 import ast
+from math import pow
+import math
+from operator import itemgetter
 
+# To check whether the two flags can be compared or not
+def iscomparable_flag(element_1,element_2):
+	flag1=0;
+	flag2=0;
+	for i in range(0,len(element_1)):
+		if((element_1[i]-element_2[i])>0):
+			if(flag2==1):
+				return False;
+			flag1 = 1;
+		elif((element_1[i]-element_2[i])<0):
+			if(flag1==1):
+				return False;
+			flag2 = 1;
+	return True
 
 # To compare two numbers and return which one is dominant over other 
 def compare(element_1,element_2):
-	flag1=0;
-	flag2=0;
-	for i in range(0,len(element_1[1])):
-		if((element_1[1][i]-element_2[1][i])>0):
-			if(flag2==1):
-				return 0;
-			flag1 = 1;
-		elif((element_1[1][i]-element_2[1][i])<0):
-			if(flag1==1):
-				return 0;
-			flag2 = 1;
-	if(flag1 == 1 and flag2 == 0):
-		return 2
-	else :
-		return 1
+	if(iscomparable_flag(element_1[0],element_2[0]) == True):
+		flag1=0;
+		flag2=0;
+		for i in range(0,len(element_1[1][1])):
+			if((element_1[1][1][i]-element_2[1][1][i])>0):
+				if(flag2==1):
+					return 0;
+				flag1 = 1;
+			elif((element_1[1][1][i]-element_2[1][1][i])<0):
+				if(flag1==1):
+					return 0;
+				flag2 = 1;
+		if(flag1 == 1 and flag2 == 0):
+			return 2
+		else :
+			return 1
+	else:
+		return 0
 
 #Initialize variables for BNL
 def initialize_var():
@@ -68,7 +88,7 @@ def find_skylines_using_BNL(sample_data):
 	data_tuple_with_timestamp=[];
 	for data in sample_data:
 		timestamp=timestamp+1;
-		data_tuple_with_timestamp.append([timestamp,data]);
+		data_tuple_with_timestamp.append([data[0],[timestamp,data[1]]]);
 	for data in data_tuple_with_timestamp:
 		#print "Window data is :",window_data,"\n","Data to be compared is :",data
 		if(len(window_data)==0):
@@ -97,9 +117,9 @@ def find_skylines_using_BNL(sample_data):
 					#print "\n\n\n\n\n\nn\n\n\n\n"
 					with open("skyline_temporary_file.txt", "a") as myfile:
 						if(flag3==0):
-							all_skyline_before_time=data[0];
+							all_skyline_before_time=data[1][0];
 							flag3=1;
-						for integer in data[1]:
+						for integer in data[1][1]:
 							myfile.write(str(integer));
 							myfile.write(" ");
 						myfile.write("\n");
@@ -108,7 +128,7 @@ def find_skylines_using_BNL(sample_data):
 	if(os.stat("skyline_temporary_file.txt").st_size == 0):
 		#print "windowdata =",window_data,"\n"
 		for data in window_data:
-			skylines.append(data[1]);
+			skylines.append(data[1][1]);
 	else:
 		temp_data_list=[];
 		new_window_data=[];
@@ -117,8 +137,8 @@ def find_skylines_using_BNL(sample_data):
 		fo = open("skyline_temporary_file.txt", "rw+");
 		fo.truncate();
 		for data in window_data:
-			if(all_skyline_before_time > data[0]):
-				skylines.append(data[1]);
+			if(all_skyline_before_time > data[1][0]):
+				skylines.append(data[1][1]);
 			else:
 				new_window_data.append(data);
 		window_data=new_window_data;	
@@ -126,8 +146,36 @@ def find_skylines_using_BNL(sample_data):
 		print "File data=",temp_data_list,"\n";	
 		find_skylines_using_BNL(temp_data_list);
 
+#To convert the flag into Bits
+def convert_flag_to_bits(flag,dim):
+	count = dim
+	result = [0] * dim
+	while (flag>0):
+		a=int(float(flag%2))
+		result[count - 1] = a
+		count = count -1
+		flag=(flag-a)/2
+	return result
 
-##-------------- Division Job  ------------------##
+# To calculate the entropy for each point based on the entropy function
+def entropy(data):
+	entropy=0;
+	for i in data:
+		entropy=entropy+math.log(1+i);
+	return entropy;
+
+# To find skyline using SFS
+def find_skylines_using_SFS(sample_data):
+	temp_data_list=[];
+	final_data_list_2=[];
+	for data in sample_data:
+		temp_data_list.append([entropy(data[1]),[data[0],data[1]]]);
+	final_data_list_1=sorted(temp_data_list,key=itemgetter(0));
+	for data in final_data_list_1:
+		final_data_list_2.append(data[1]);
+	find_skylines_using_BNL(final_data_list_2);
+
+##-------------- Merging  Job  ------------------##
 # Hadoop sorts mapper output by key (here: flag) before it is passed to the reducer
 # Reduce Task
 if __name__ == '__main__':
@@ -141,51 +189,30 @@ if __name__ == '__main__':
 	file_counter=0;
 	flag3=0;
 
-	#Create a new file to store the output
-	fo = open("divison_job_reducer_output.txt", "w+");
-	fo.truncate();
-
 	# Variables used in thsi algorithm
-	current_flag = -1
-	flag = -1
-	input_set_for_each_flag= []
+	input_set= []
+	zero_all_exists = False
 
 	# input comes from STDIN
 	for line in sys.stdin:
 		# remove leading and trailing whitespace
 		line = line.strip()
-		flag, point = line.split('\t')
-		flag  = ast.literal_eval(flag)
-		point  = ast.literal_eval(point)
+		a = line.split('\t',1)[1]
+		tuple = ast.literal_eval(a)
+		flag = tuple[0]
+		point = tuple[1]
+		converted_flag = convert_flag_to_bits(flag,len(point))
 
 		#print flag,point
 		
-		# Reduce Task
-		if current_flag == flag :
-			input_set_for_each_flag.append(point)
-		else :
-			if current_flag != -1 :
-				#write skylines to a file
-				#print "Input Set = ",input_set_for_each_flag
-				initialize_var()
-				find_skylines_using_BNL(input_set_for_each_flag)
-				with open("divison_job_reducer_output.txt", "a") as myfile:
-					for skyline in skylines:
-						myfile.write(str(current_flag)+'\t'+str(skyline)+'\n')
-				for skyline in skylines:	
-					print current_flag,'\t',skyline
-			input_set_for_each_flag = []
-			skylines = []
-			current_flag = flag
-			input_set_for_each_flag.append(point)
+		if ( flag == 0) :
+			zero_all_exists = True
 
-	# To output the skylines out of the remaining input to be processed
-	if current_flag == flag :
-		#print "Input Set = ",input_set_for_each_flag
-		initialize_var()
-		find_skylines_using_BNL(input_set_for_each_flag)
-		with open("divison_job_reducer_output.txt", "a") as myfile:
-			for skyline in skylines:
-				myfile.write(str(current_flag)+'\t'+str(skyline)+'\n')
-		for skyline in skylines:
-			print current_flag,'\t',skyline
+		if not(( flag == pow(2,len(point)) - 1) and zero_all_exists == True ):
+			input_set.append([converted_flag,point])
+				
+
+	#print input_set
+	find_skylines_using_SFS(input_set)
+	for skyline in skylines:
+		print skyline

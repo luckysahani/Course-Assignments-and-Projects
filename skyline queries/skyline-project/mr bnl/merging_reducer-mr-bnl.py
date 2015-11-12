@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 #--------------PSEUDO CODE -----------------#
 
 # INPUT: the original data set S
@@ -91,14 +93,12 @@ def find_skylines_using_BNL(sample_data):
 			window_data.append(data);
 		else:
 			topush_data=False;
-			flag1=0;
 			new_window_data=[];
 			for i in xrange(0,len(window_data)): 
 				element=window_data[i];
 				compare_result = compare(data,element);
 				#print "Comparing data :",data," and element :",element," and result is :",compare_result
 				if (compare_result == 1):
-					flag1=1;
 					topush_data=True;
 				elif (compare_result == 2):
 					topush_data=False;
@@ -122,6 +122,7 @@ def find_skylines_using_BNL(sample_data):
 							myfile.write(" ");
 						myfile.write("\n");
 			window_data=new_window_data;
+	open("skyline_temporary_file.txt", "a");
 	if(os.stat("skyline_temporary_file.txt").st_size == 0):
 		#print "windowdata =",window_data,"\n"
 		for data in window_data:
