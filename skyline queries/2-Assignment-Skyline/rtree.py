@@ -32,6 +32,7 @@ class RTree(object):
 		self.minimum_childs=minimum_childs
 		self.maximum_childs=maximum_childs
 		self.parent=parent
+		# print minimum_childs,minimum_childs
 
 	def choose_leaf(self, Node) :
 		#If the current node layer is equal to the layer of the node to be inserted,then return that node.
@@ -366,6 +367,8 @@ if __name__ == '__main__':
 	#Calculating the number of entries that can be stored in a page i.e the block size
 	# Number of index entries per leaf page = Floor( Page_size / (size(search key value) + size(reference to tuple))) 
 	blocksize = floor(diskpagesize/(pointer_size+key_size))
+
+	# print blocksize
 
 	#Initializing the root with the calculate blcoksize as its max childs
 	root = RTree(minimum_childs = int(blocksize)/2, maximum_childs = int(blocksize))
