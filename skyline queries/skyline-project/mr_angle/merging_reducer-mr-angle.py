@@ -66,6 +66,7 @@ def find_skylines_using_BNL(sample_data):
 	flag3=0;
 	all_skyline_before_time=0;
 	data_tuple_with_timestamp=[];
+	temp_data_list=[];
 	for data in sample_data:
 		timestamp=timestamp+1;
 		data_tuple_with_timestamp.append([data[0],[timestamp,data[1]]]);
@@ -94,36 +95,22 @@ def find_skylines_using_BNL(sample_data):
 				if(len(new_window_data)<window_maxsize):
 					new_window_data.append(data);
 				else:
-					#print "\n\n\n\n\n\nn\n\n\n\n"
-					with open("skyline_temporary_file.txt", "a") as myfile:
-						if(flag3==0):
-							all_skyline_before_time=data[1][0];
-							flag3=1;
-						for integer in data[1][1]:
-							myfile.write(str(integer));
-							myfile.write(" ");
-						myfile.write("\n");
+					if(flag3==0):
+						all_skyline_before_time=data[1][0];
+						flag3=1;
+					temp_data_list.append([data[0],data[1][1]])
 			window_data=new_window_data;
-	open("skyline_temporary_file.txt", "a");
-	if(os.stat("skyline_temporary_file.txt").st_size == 0):
-		#print "windowdata =",window_data,"\n"
+	if(len(temp_data_list)== 0):
 		for data in window_data:
 			skylines.append(data[1][1]);
 	else:
-		temp_data_list=[];
 		new_window_data=[];
-		with open('skyline_temporary_file.txt') as f:
-			temp_data_list = [[float(x) for x in line.split()] for line in f];
-		fo = open("skyline_temporary_file.txt", "rw+");
-		fo.truncate();
 		for data in window_data:
 			if(all_skyline_before_time > data[1][0]):
 				skylines.append(data[1][1]);
 			else:
 				new_window_data.append(data);
-		window_data=new_window_data;	
-		print window_data;
-		print "File data=",temp_data_list,"\n";	
+		window_data=new_window_data;
 		find_skylines_using_BNL(temp_data_list);
 
 #To convert the flag into Bits

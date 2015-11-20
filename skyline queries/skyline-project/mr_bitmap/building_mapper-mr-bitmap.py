@@ -45,7 +45,7 @@ if __name__ == '__main__':
 	
 	
 	# Get data from stdin
-	input_data = [[int(x) for x in line.split()] for line in sys.stdin]
+	input_data = [[float(x) for x in line.split(',')] for line in sys.stdin]
 	
 
 	# #Storing number of dimensions
@@ -62,4 +62,5 @@ if __name__ == '__main__':
 	for j in range(0,len(input_data)):
 		point = input_data[j] 
 		for i in range(0,len(point)):
-			print i,"\t",[point[i],j]
+			k = int(point[i]*100000)
+			print i,"\t",[k,j]

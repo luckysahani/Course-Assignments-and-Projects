@@ -121,8 +121,8 @@ def find_skylines_using_BNL(sample_data):
 			else:
 				new_window_data.append(data);
 		window_data=new_window_data;	
-		print window_data;
-		print "File data=",temp_data_list,"\n";	
+		# print window_data;
+		# print "File data=",temp_data_list,"\n";	
 		find_skylines_using_BNL(temp_data_list);
 
 

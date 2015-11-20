@@ -122,8 +122,8 @@ def find_skylines_using_BNL(sample_data):
 			else:
 				new_window_data.append(data);
 		window_data=new_window_data;	
-		print window_data;
-		print "File data=",temp_data_list,"\n";	
+		# print window_data;
+		# print "File data=",temp_data_list,"\n";	
 		find_skylines_using_BNL(temp_data_list);
 
 
@@ -142,8 +142,9 @@ if __name__ == '__main__':
 	flag3=0;
 
 	#Create a new file to store the output
-	fo = open("divison_job_reducer_output.txt", "w+");
-	fo.truncate();
+	# open("skyline_temporary_file.txt", "a");
+	# fo = open("divison_job_reducer_output.txt", "w+");
+	# fo.truncate();
 
 	# Variables used in thsi algorithm
 	current_flag = -1
@@ -169,9 +170,9 @@ if __name__ == '__main__':
 				#print "Input Set = ",input_set_for_each_flag
 				initialize_var()
 				find_skylines_using_BNL(input_set_for_each_flag)
-				with open("divison_job_reducer_output.txt", "a") as myfile:
-					for skyline in skylines:
-						myfile.write(str(current_flag)+'\t'+str(skyline)+'\n')
+				# with open("divison_job_reducer_output.txt", "a") as myfile:
+				# 	for skyline in skylines:
+				# 		myfile.write(str(current_flag)+'\t'+str(skyline)+'\n')
 				for skyline in skylines:	
 					print current_flag,'\t',skyline
 			input_set_for_each_flag = []
@@ -184,8 +185,8 @@ if __name__ == '__main__':
 		#print "Input Set = ",input_set_for_each_flag
 		initialize_var()
 		find_skylines_using_BNL(input_set_for_each_flag)
-		with open("divison_job_reducer_output.txt", "a") as myfile:
-			for skyline in skylines:
-				myfile.write(str(current_flag)+'\t'+str(skyline)+'\n')
+		# with open("divison_job_reducer_output.txt", "a") as myfile:
+		# 	for skyline in skylines:
+		# 		myfile.write(str(current_flag)+'\t'+str(skyline)+'\n')
 		for skyline in skylines:
 			print current_flag,'\t',skyline

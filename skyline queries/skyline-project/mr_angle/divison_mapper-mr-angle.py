@@ -63,7 +63,7 @@ if __name__ == '__main__':
 	number_of_reducer = 3
 	#Get data from stdin
 	for line in sys.stdin:
-		point = [float(x) for x in line.split()]
+		point = [float(x) for x in line.split(',')]
 		point_in_spherical_coordinate = convert_point_in_spherical_coordinate(point , len(point))
 		# print point,point_in_spherical_coordinate
 

@@ -37,7 +37,7 @@ import ast
 if __name__ == '__main__':
 
 	# Get data from stdin
-	input_data = [[int(x) for x in line.split()] for line in sys.stdin]
+	input_data = [[float(x) for x in line.split(',')] for line in sys.stdin]
 
 	number_of_clusters = 3
 
